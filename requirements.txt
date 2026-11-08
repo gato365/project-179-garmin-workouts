@@ -1,0 +1,2 @@
+garminconnect==0.2.8   # newer releases need Python 3.10+
+PyYAML>=6.0

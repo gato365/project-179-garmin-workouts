@@ -1,0 +1,136 @@
+# Week of Sunday 2026-11-08 -> Saturday 2026-11-14
+#
+#   python3 plan_workouts.py show     plans/2026-11-08.yaml
+#   python3 plan_workouts.py validate plans/2026-11-08.yaml
+#   python3 plan_workouts.py build    plans/2026-11-08.yaml --dry-run
+#
+# Routine names must match (or uniquely match part of) a workout name in
+# library/workouts.yaml. Times are wall-clock; Garmin schedules by date only, so
+# the time goes into the workout name and description.
+
+week_start: 2026-11-08
+order: circuit            # A -> B -> C -> A ... one set of each, then round two
+rest_between_sets: "00:30" # intentional rest, programmed into the watch
+stretch: "05:00"           # timed stretch step appended to every strength session
+schedule: true             # put each workout on the Connect calendar for its date
+
+description: >
+  Week 46 plan. Dated workouts so the library and history stay searchable.
+focus_note: >
+  Timing has two kinds: starting the SESSION at the planned clock time, and
+  starting each SET on focus rather than fatigue. The watch holds the rest; the
+  clock holds the start.
+
+# Per-routine overrides. `change` is the "how I plan to change it" note that is
+# written into the workout description. Weights are pounds; per dumbbell unless
+# the exercise is a barbell lift. Values come from the 2026-10-25..31 log where
+# the hand record and the watch disagreed (watch logged 20 lb on arms, user said
+# 10) - edit them here, not in the library.
+routines:
+  Arms & Shoulders:
+    change: >
+      Hold 10 lb per dumbbell at 10 reps for every arm movement until all three
+      rounds are clean, then move to 12.5 lb.
+    reps: 10
+    weights:
+      Arnold Press: 10
+      One-arm Concentration Curl: 10
+      Barbell Biceps Curl: 10          # unconfirmed basis - bar vs plates
+      Alternating Dumbbell Biceps Curl: 10
+      Overhead Dumbbell Triceps Extension: 10
+      Shoulder Press: 10
+      Dumbbell Hammer Curl: 10
+      Alternating Dumbbell Biceps Curl on Swiss Ball: 10
+  Chest & Back:
+    change: >
+      Bench is the only barbell lift; keep 65 lb total until reps are reported,
+      then add 5 lb a week. Dumbbell work stays at 10 lb per hand.
+    reps: 10
+    weights:
+      Dumbbell Bench Press: 65         # barbell bench in practice; 65 lb total (unconfirmed)
+      Dumbbell Fly: 10
+      Bent-over Row with Dumbbell: 10
+      Fly: 10
+      Dumbbell Upright Row: 10
+  Legs & Abs:
+    change: >
+      Bodyweight squats and crunch circuit as in the library; weighted squats
+      and calf raises (27.5 lb per hand on 10/29) stay a separate add-on until
+      the circuit is consistent.
+  Circuit Workout - Midday:
+    change: >
+      Short 20 s rests - this is a focus break from the desk, not a lift.
+    rest: "00:20"
+
+days:
+  - date: 2026-11-08   # Sunday
+    sessions:
+      - time: "8:00 AM"
+        routine: Swim
+        type: swim                      # 16 laps x 50 m = 800 m; not a Garmin workout
+      - time: "12:10 PM"
+        routine: Circuit Workout - Midday
+      - time: "4:45 PM"
+        routine: Circuit Workout - Midday   # ASSUMPTION: "Night workout" uses the same circuit
+        slot: night
+
+  - date: 2026-11-09   # Monday
+    sessions:
+      - time: "6:00 AM"
+        routine: Arms & Shoulders
+      - time: "12:10 PM"
+        routine: Circuit Workout - Midday
+      - time: "4:45 PM"
+        routine: Circuit Workout - Midday
+        slot: night
+
+  - date: 2026-11-10   # Tuesday
+    sessions:
+      - time: "6:45 AM"
+        routine: Legs & Abs
+      - time: "12:10 PM"
+        routine: Circuit Workout - Midday
+      - time: "4:45 PM"
+        routine: Circuit Workout - Midday
+        slot: night
+
+  - date: 2026-11-11   # Wednesday
+    sessions:
+      - time: "6:00 AM"
+        routine: Chest & Back
+      - time: "12:10 PM"
+        routine: Circuit Workout - Midday
+      - time: "4:45 PM"
+        routine: Circuit Workout - Midday
+        slot: night
+
+  - date: 2026-11-12   # Thursday
+    sessions:
+      - time: "6:45 AM"
+        routine: Arms & Shoulders
+      - time: "12:10 PM"
+        routine: Circuit Workout - Midday
+      - time: "4:45 PM"
+        routine: Circuit Workout - Midday
+        slot: night
+
+  - date: 2026-11-13   # Friday
+    sessions:
+      - time: "6:00 AM"
+        routine: Legs & Abs
+      - time: "12:10 PM"
+        routine: Circuit Workout - Midday
+      - time: "4:45 PM"
+        routine: Circuit Workout - Midday
+        slot: night
+
+  - date: 2026-11-14   # Saturday
+    sessions:
+      - time: "6:00 AM"
+        routine: Chest & Back
+        cancelled: true
+      - time: "12:10 PM"
+        routine: Circuit Workout - Midday
+      - time: "4:45 PM"
+        routine: Circuit Workout - Midday
+        slot: night

@@ -1,0 +1,30 @@
+# Display name (as written in library/workouts.yaml or a plan) -> Garmin
+# CATEGORY/EXERCISE_NAME. Only needed when the normalised name is not an exact
+# catalog match or is ambiguous. Look names up with:
+#     python3 garmin_workouts.py exercises "calf raise"
+# Garmin's own spellings are kept as-is (DUMBELL, FLYE).
+aliases:
+  Dumbbell Fly:                      FLYE/DUMBBELL_FLYE
+  Fly:                               FLYE/DUMBBELL_FLYE          # "Chest Fly" - standing dumbbell fly
+  Chest Fly:                         FLYE/DUMBBELL_FLYE
+  Standing Dumbbell Fly:             FLYE/DUMBBELL_FLYE
+  Bent-over Row with Dumbbell:       ROW/BENT_OVER_ROW_WITH_DUMBELL
+  Two Arm Row:                       ROW/BENT_OVER_ROW_WITH_DUMBELL
+  Shoulder Press:                    SHOULDER_PRESS/DUMBBELL_SHOULDER_PRESS
+  Banded High Plank Leg Lifts:       BANDED_EXERCISES/HIGH_PLANK_LEG_LIFTS
+  6 Inches:                          BANDED_EXERCISES/HIGH_PLANK_LEG_LIFTS
+  Push-ups:                          PUSH_UP/PUSH_UP
+  Push-up:                           PUSH_UP/PUSH_UP
+  Squats:                            SQUAT/SQUAT
+  Squat:                             SQUAT/SQUAT
+  Dumbbell Squat:                    SQUAT/DUMBBELL_SQUAT
+  Bicycle Crunches:                  CRUNCH/BICYCLE_CRUNCH
+  Bicycle Crunch:                    CRUNCH/BICYCLE_CRUNCH
+  Side Crunches:                     CRUNCH/STANDING_SIDE_CRUNCH
+  Calf Raises:                       CALF_RAISE/STANDING_DUMBBELL_CALF_RAISE
+  Mountain Climber:                  PLANK/MOUNTAIN_CLIMBER
+  Plank:                             PLANK/PLANK
+  Russian Twist:                     CORE/RUSSIAN_TWIST
+  Side Lunge:                        LUNGE/SIDE_LUNGE
+  Sit-up:                            SIT_UP/SIT_UP
+  Stretch:                           WARM_UP/STRETCH_CAT_COW     # placeholder step; the watch just times it

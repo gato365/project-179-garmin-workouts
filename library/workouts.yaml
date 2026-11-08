@@ -1,0 +1,212 @@
+# Garmin Connect workout backup
+# Times use MM:SS. Weight values use pounds (lbs).
+# A rest after the final exercise is skipped on the last round of each block.
+workouts:
+  - name: "1- Chest & Back - Phase 1 - Strength Workout"
+    blocks:
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Dumbbell Bench Press
+            reps: 15
+            rest: "00:45"
+          - name: Dumbbell Fly
+            reps: 15
+            rest: "00:45"
+          - name: Bent-over Row with Dumbbell
+            display_name: Two Arm Row
+            reps: 15
+            rest: "00:45"
+          - name: Fly
+            display_name: Chest Fly
+            reps: 15
+            rest: "00:45"
+          - name: Dumbbell Upright Row
+            reps: 15
+            rest: "01:30"
+
+  - name: "00 - Arms & Shoulders - Phase 1 - Strength Workout"
+    blocks:
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Arnold Press
+            reps: 12
+            weight_lbs: 20
+            rest: "00:30"
+          - name: One-arm Concentration Curl
+            reps: 12
+            rest: "00:30"
+          - name: Barbell Biceps Curl
+            reps: 12
+            rest: "00:30"
+          - name: Alternating Dumbbell Biceps Curl
+            reps: 12
+            rest: "00:30"
+          - name: Overhead Dumbbell Triceps Extension
+            reps: 12
+            rest: "00:30"
+          - name: Shoulder Press
+            reps: 12
+            weight_lbs: 20
+            rest: "00:30"
+          - name: Dumbbell Hammer Curl
+            reps: 12
+            weight_lbs: 20
+            rest: "00:30"
+          - name: Alternating Dumbbell Biceps Curl on Swiss Ball
+            display_name: Hammer Curl
+            reps: 12
+            rest: "01:30"
+
+  - name: "Travel Workout - 30 Minutes"
+    blocks:
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Push-up
+            reps: 5
+            weight: bodyweight
+            rest: "00:15"
+          - name: Burpee
+            reps: 3
+            weight: bodyweight
+            rest: "00:15"
+          - name: Split Jacks
+            reps: 10
+            weight: bodyweight
+            rest: "00:15"
+          - name: Mountain Climber
+            reps: 10
+            weight: bodyweight
+            rest: "00:30"
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Bicycle Crunch
+            reps: 12
+            weight: bodyweight
+            rest: "00:50"
+          - name: Plank
+            duration: "00:45"
+            weight: bodyweight
+            rest: "00:50"
+          - name: Russian Twist
+            reps: 16
+            rest: "00:30"
+          - name: Banded High Plank Leg Lifts
+            duration: "00:30"
+            display_name: 6 Inches
+            rest: "00:30"
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Squat
+            reps: 12
+            weight: bodyweight
+            rest: "00:05"
+          - name: Standing Cable Crunch
+            reps: 20
+            display_name: Standing Cross-Body Crunch
+            rest: "00:05"
+          - name: Standing Side Crunch
+            reps: 15
+            rest: "00:05"
+          - name: Toes to Elbows
+            reps: 20
+            display_name: Standing Crossover Toe Touch
+            rest: "00:30"
+
+  - name: "Legs & Abs - Phase 1 - Strength Workout"
+    blocks:
+      - sets: 6
+        skip_last_rest: true
+        exercises:
+          - name: Squat
+            reps: 12
+            weight: bodyweight
+            note: No Weight
+          - name: Standing Cable Crunch
+            reps: 12
+            rest: "00:20"
+      - sets: 6
+        skip_last_rest: true
+        exercises:
+          - name: Sit-up
+            reps: 12
+            weight: bodyweight
+          - name: Bicycle Crunch
+            reps: 6
+            weight: bodyweight
+          - name: Russian Twist
+            reps: 6
+            rest: "00:20"
+
+  - name: "Strength Workout - Lite"
+    blocks:
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Standing Side Crunch
+            reps: 30
+            rest: "00:20"
+          - name: Side Lunge
+            reps: 10
+            weight: bodyweight
+            rest: "00:20"
+          - name: Squat
+            reps: 15
+            weight: bodyweight
+            rest: "00:20"
+          - name: Walking High Knees
+            reps: 30
+            rest: "00:45"
+
+  - name: "Spyderman Workout"
+    blocks:
+      - sets: 5
+        skip_last_rest: true
+        exercises:
+          - name: Standing Side Crunch
+            reps: 16
+            rest: "00:08"
+          - name: Side Lunge
+            reps: 10
+            weight: bodyweight
+            rest: "00:08"
+          - name: Squat
+            reps: 8
+            weight: bodyweight
+            rest: "00:08"
+          - name: Spiderman Push-up
+            reps: 4
+            weight: bodyweight
+            rest: "00:20"
+          - name: Walking High Knees
+            reps: 16
+            rest: "00:35"
+
+
+  - name: "Circuit Workout - Midday"
+    blocks:
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Push-ups
+            reps: 10
+            rest: "00:20"
+          - name: Bicycle Crunches
+            reps: 10
+            rest: "00:20"
+      - sets: 3
+        skip_last_rest: true
+        exercises:
+          - name: Squats
+            reps: 10
+            rest: "00:20"
+          - name: Side Crunches
+            reps: 10
+            rest: "00:20"
+
+
+
