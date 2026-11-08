@@ -346,11 +346,29 @@ def cmd_build_reuse(a, plan):
         groups.setdefault(s["routine"], []).append(s)
     fmt = plan.get("name_format") or "{routine}"
     created = 0
+    want = {gw.norm(r) for r in (a.routine or [])}
     for routine, ss in groups.items():
+        if want and gw.norm(routine) not in want:
+            continue
         have = hist["workouts"].get(routine) or {}
         if have.get("workout_id") and not have.get("deleted_at") and not a.force:
             print(f"-- {routine}: already built (workoutId {have['workout_id']}); use --force to rebuild")
             continue
+        if have.get("workout_id") and not have.get("deleted_at") and not a.dry_run:
+            # --force replaces: drop the old calendar entries and workout so Connect
+            # never holds two copies of the same routine.
+            for d, sid in (have.get("schedule_ids") or {}).items():
+                if sid:
+                    try:
+                        gw.api(g, "DELETE", f"{gw.WS}/schedule/{sid}")
+                    except Exception:
+                        pass
+            try:
+                gw.api(g, "DELETE", f"{gw.WS}/workout/{have['workout_id']}")
+                print(f"-- {routine}: deleted previous workoutId {have['workout_id']} and its calendar entries")
+            except Exception as e:                            # pragma: no cover
+                print(f"-- {routine}: could not delete previous workoutId {have['workout_id']}: {e}")
+            hist.setdefault("replaced", []).append({**have, "deleted_at": datetime.now().isoformat(timespec="seconds")})
         times = [(s["dow"], s["time"]) for s in ss]
         name = fmt.format(routine=routine, date="", dow="", time="", slot="").strip()
         payload, lib_name = build_payload(plan, ss[0], library, aliases, name=name, times=times)
@@ -383,8 +401,9 @@ def cmd_build_reuse(a, plan):
         hist["workouts"][routine] = rec
         created += 1
     if a.dry_run:
-        print(f"\n--dry-run: {len(groups)} workout(s) would be created for "
-              f"{sum(len(v) for v in groups.values())} session(s); nothing sent to Garmin.")
+        sel = {r: v for r, v in groups.items() if not want or gw.norm(r) in want}
+        print(f"\n--dry-run: {len(sel)} workout(s) would be created for "
+              f"{sum(len(v) for v in sel.values())} session(s); nothing sent to Garmin.")
         return
     hist["sessions"] = []
     for s in sess:
@@ -601,7 +620,8 @@ def main():
     p.add_argument("--send", action="store_true", help="push each created workout to the watch")
     p.add_argument("--device", help="deviceId for --send (default: last used watch)")
     p.add_argument("--no-schedule", action="store_true", help="create in the library only")
-    p.add_argument("--force", action="store_true", help="rebuild sessions already in history")
+    p.add_argument("--force", action="store_true", help="rebuild sessions already in history (reuse mode: replace the workout in place)")
+    p.add_argument("--routine", action="append", help="reuse mode: only build this routine (repeatable)")
     p.set_defaults(f=cmd_build)
     a = ap.parse_args()
     a.f(a)

@@ -4,6 +4,8 @@
 #     python3 garmin_workouts.py exercises "calf raise"
 # Garmin's own spellings are kept as-is (DUMBELL, FLYE).
 aliases:
+  Bench Press:                       BENCH_PRESS/BARBELL_BENCH_PRESS
+  Barbell Bench Press:               BENCH_PRESS/BARBELL_BENCH_PRESS
   Dumbbell Fly:                      FLYE/DUMBBELL_FLYE
   Fly:                               FLYE/DUMBBELL_FLYE          # "Chest Fly" - standing dumbbell fly
   Chest Fly:                         FLYE/DUMBBELL_FLYE

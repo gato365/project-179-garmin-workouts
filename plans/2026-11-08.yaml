@@ -24,35 +24,33 @@ focus_note: >
 
 # Per-routine overrides. `change` is the "how I plan to change it" note that is
 # written into the workout description. Weights are pounds; per dumbbell unless
-# the exercise is a barbell lift. Values come from the 2026-10-25..31 log where
-# the hand record and the watch disagreed (watch logged 20 lb on arms, user said
-# 10) - edit them here, not in the library.
+# the exercise is a barbell lift. Edit them here, not in the library.
 routines:
   Arms & Shoulders:
     change: >
-      Hold 10 lb per dumbbell at 10 reps for every arm movement until all three
-      rounds are clean, then move to 12.5 lb.
+      15 lb per dumbbell at 10 reps for every dumbbell movement; barbell curl
+      stays at 10 lb until the bar weight is confirmed.
     reps: 10
     weights:
-      Arnold Press: 10
-      One-arm Concentration Curl: 10
-      Barbell Biceps Curl: 10          # unconfirmed basis - bar vs plates
-      Alternating Dumbbell Biceps Curl: 10
-      Overhead Dumbbell Triceps Extension: 10
-      Shoulder Press: 10
-      Dumbbell Hammer Curl: 10
-      Alternating Dumbbell Biceps Curl on Swiss Ball: 10
+      Arnold Press: 15
+      One-arm Concentration Curl: 15
+      Barbell Biceps Curl: 10          # barbell, not dumbbell - unconfirmed bar vs plates
+      Alternating Dumbbell Biceps Curl: 15
+      Overhead Dumbbell Triceps Extension: 15
+      Shoulder Press: 15
+      Dumbbell Hammer Curl: 15
+      Alternating Dumbbell Biceps Curl on Swiss Ball: 15
   Chest & Back:
     change: >
-      Bench is the only barbell lift; keep 65 lb total until reps are reported,
-      then add 5 lb a week. Dumbbell work stays at 10 lb per hand.
+      Barbell bench press at 105 lb total; add 5 lb a week once all three rounds
+      are clean. Every dumbbell movement at 15 lb per hand.
     reps: 10
     weights:
-      Dumbbell Bench Press: 65         # barbell bench in practice; 65 lb total (unconfirmed)
-      Dumbbell Fly: 10
-      Bent-over Row with Dumbbell: 10
-      Fly: 10
-      Dumbbell Upright Row: 10
+      Bench Press: 105                 # barbell, total bar weight
+      Dumbbell Fly: 15
+      Bent-over Row with Dumbbell: 15
+      Fly: 15
+      Dumbbell Upright Row: 15
   Legs & Abs:
     change: >
       Bodyweight squats and crunch circuit as in the library; weighted squats

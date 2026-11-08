@@ -7,7 +7,8 @@ workouts:
       - sets: 3
         skip_last_rest: true
         exercises:
-          - name: Dumbbell Bench Press
+          - name: Bench Press
+            display_name: Barbell Bench Press
             reps: 15
             rest: "00:45"
           - name: Dumbbell Fly

@@ -37,12 +37,12 @@
   },
   "Arms & Shoulders": {
    "workout_name": "Arms & Shoulders",
-   "workout_id": 1755043812,
+   "workout_id": 1755180415,
    "library": "00 - Arms & Shoulders - Phase 1 - Strength Workout",
-   "created_at": "2026-11-08T05:40:58",
+   "created_at": "2026-11-08T07:09:49",
    "schedule_ids": {
-    "2026-11-09": 1833994042,
-    "2026-11-12": 1833994044
+    "2026-11-09": 1834131718,
+    "2026-11-12": 1834131721
    },
    "sent": true
   },
@@ -59,11 +59,11 @@
   },
   "Chest & Back": {
    "workout_name": "Chest & Back",
-   "workout_id": 1755043838,
+   "workout_id": 1755180447,
    "library": "1- Chest & Back - Phase 1 - Strength Workout",
-   "created_at": "2026-11-08T05:40:59",
+   "created_at": "2026-11-08T07:09:50",
    "schedule_ids": {
-    "2026-11-11": 1833994076
+    "2026-11-11": 1834131751
    },
    "sent": true
   }
@@ -108,8 +108,8 @@
    "type": "strength",
    "routine": "Arms & Shoulders",
    "cancelled": false,
-   "workout_id": 1755043812,
-   "schedule_id": 1833994042
+   "workout_id": 1755180415,
+   "schedule_id": 1834131718
   },
   {
    "date": "2026-11-09",
@@ -174,8 +174,8 @@
    "type": "strength",
    "routine": "Chest & Back",
    "cancelled": false,
-   "workout_id": 1755043838,
-   "schedule_id": 1833994076
+   "workout_id": 1755180447,
+   "schedule_id": 1834131751
   },
   {
    "date": "2026-11-11",
@@ -207,8 +207,8 @@
    "type": "strength",
    "routine": "Arms & Shoulders",
    "cancelled": false,
-   "workout_id": 1755043812,
-   "schedule_id": 1833994044
+   "workout_id": 1755180415,
+   "schedule_id": 1834131721
   },
   {
    "date": "2026-11-12",
@@ -288,5 +288,30 @@
    "schedule_id": 1833994025
   }
  ],
- "built_at": "2026-11-08T05:40:59"
+ "built_at": "2026-11-08T07:09:50",
+ "replaced": [
+  {
+   "workout_name": "Arms & Shoulders",
+   "workout_id": 1755043812,
+   "library": "00 - Arms & Shoulders - Phase 1 - Strength Workout",
+   "created_at": "2026-11-08T05:40:58",
+   "schedule_ids": {
+    "2026-11-09": 1833994042,
+    "2026-11-12": 1833994044
+   },
+   "sent": true,
+   "deleted_at": "2026-11-08T07:09:49"
+  },
+  {
+   "workout_name": "Chest & Back",
+   "workout_id": 1755043838,
+   "library": "1- Chest & Back - Phase 1 - Strength Workout",
+   "created_at": "2026-11-08T05:40:59",
+   "schedule_ids": {
+    "2026-11-11": 1833994076
+   },
+   "sent": true,
+   "deleted_at": "2026-11-08T07:09:50"
+  }
+ ]
 }
