@@ -140,13 +140,13 @@ Drop a file in and reference it here:
 
 | Day | Morning | Midday | Night |
 |---|---|---|---|
-| Sunday | Rest & Swim | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
+| Sunday | Swim 11:00 AM | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
 | Monday | Arms & Shoulders 6:00 AM | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
 | Tuesday | Legs & Abs 6:45 AM | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
 | Wednesday | Chest & Back 6:00 AM | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
 | Thursday | Arms & Shoulders 6:45 AM | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
 | Friday | Legs & Abs 6:00 AM | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
-| Saturday | Chest & Back (cancelled) | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
+| Saturday | Rest | Circuit & Stretch 12:10 PM | Circuit & Stretch 4:45 PM |
 
 The machine-readable version is [`plans/2026-11-08.yaml`](plans/2026-11-08.yaml).
 The midday and night sessions both use the library's *Circuit Workout -

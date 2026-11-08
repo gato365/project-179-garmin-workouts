@@ -188,25 +188,26 @@ workouts:
 
 
   - name: "Circuit Workout - Midday"
+    # Also used as the night session; the two are the same circuit.
     blocks:
       - sets: 3
         skip_last_rest: true
         exercises:
           - name: Push-ups
-            reps: 10
+            reps: 3
+            rest: "00:20"
+          - name: Knee Push-ups
+            reps: 12
             rest: "00:20"
           - name: Bicycle Crunches
-            reps: 10
+            reps: 6
             rest: "00:20"
       - sets: 3
         skip_last_rest: true
         exercises:
           - name: Squats
-            reps: 10
+            reps: 7
             rest: "00:20"
-          - name: Side Crunches
-            reps: 10
+          - name: Standing Side Crunches
+            reps: 6
             rest: "00:20"
-
-
-

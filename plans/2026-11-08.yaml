@@ -59,19 +59,22 @@ routines:
       the circuit is consistent.
   Circuit Workout - Midday:
     change: >
-      Short 20 s rests - this is a focus break from the desk, not a lift.
+      3 sets each. Circuit 1: push-ups x3, knee push-ups x12, bicycle crunches
+      x6. Circuit 2: squats x7, standing side crunches x6. Short 20 s rests -
+      this is a focus break from the desk, not a lift. The night session is
+      the same circuit.
     rest: "00:20"
 
 days:
   - date: 2026-11-08   # Sunday
     sessions:
-      - time: "8:00 AM"
+      - time: "11:00 AM"
         routine: Swim
         type: swim                      # 16 laps x 50 m = 800 m; not a Garmin workout
       - time: "12:10 PM"
         routine: Circuit Workout - Midday
       - time: "4:45 PM"
-        routine: Circuit Workout - Midday   # ASSUMPTION: "Night workout" uses the same circuit
+        routine: Circuit Workout - Midday   # night session = the midday circuit
         slot: night
 
   - date: 2026-11-09   # Monday
@@ -124,13 +127,11 @@ days:
         routine: Circuit Workout - Midday
         slot: night
 
-  - date: 2026-11-14   # Saturday
+  - date: 2026-11-14   # Saturday - no morning lift this week
     sessions:
-      - time: "6:00 AM"
-        routine: Chest & Back
-        cancelled: true
       - time: "12:10 PM"
         routine: Circuit Workout - Midday
+        slot: midday
       - time: "4:45 PM"
         routine: Circuit Workout - Midday
         slot: night

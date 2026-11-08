@@ -15,12 +15,15 @@ aliases:
   6 Inches:                          BANDED_EXERCISES/HIGH_PLANK_LEG_LIFTS
   Push-ups:                          PUSH_UP/PUSH_UP
   Push-up:                           PUSH_UP/PUSH_UP
+  Knee Push-ups:                     PUSH_UP/KNEELING_PUSH_UP
+  Knee Push-up:                      PUSH_UP/KNEELING_PUSH_UP
   Squats:                            SQUAT/SQUAT
   Squat:                             SQUAT/SQUAT
   Dumbbell Squat:                    SQUAT/DUMBBELL_SQUAT
   Bicycle Crunches:                  CRUNCH/BICYCLE_CRUNCH
   Bicycle Crunch:                    CRUNCH/BICYCLE_CRUNCH
   Side Crunches:                     CRUNCH/STANDING_SIDE_CRUNCH
+  Standing Side Crunches:            CRUNCH/STANDING_SIDE_CRUNCH
   Calf Raises:                       CALF_RAISE/STANDING_DUMBBELL_CALF_RAISE
   Mountain Climber:                  PLANK/MOUNTAIN_CLIMBER
   Plank:                             PLANK/PLANK
