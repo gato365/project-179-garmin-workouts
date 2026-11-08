@@ -1,6 +1,73 @@
 {
  "plan": "plans/2026-11-08.yaml",
  "week_start": "2026-11-08",
+ "mode": "reuse",
+ "workouts": {
+  "Circuit Workout - Midday": {
+   "workout_name": "Circuit Workout - Midday",
+   "workout_id": 1755043762,
+   "library": "Circuit Workout - Midday",
+   "created_at": "2026-11-08T05:40:55",
+   "schedule_ids": {
+    "2026-11-08": 1833993974,
+    "2026-11-09": 1833993976,
+    "2026-11-10": 1833993979,
+    "2026-11-11": 1833993983,
+    "2026-11-12": 1833993987,
+    "2026-11-13": 1833993988,
+    "2026-11-14": 1833993990
+   },
+   "sent": true
+  },
+  "Circuit Workout - Night": {
+   "workout_name": "Circuit Workout - Night",
+   "workout_id": 1755043785,
+   "library": "Circuit Workout - Midday",
+   "created_at": "2026-11-08T05:40:56",
+   "schedule_ids": {
+    "2026-11-08": 1833994003,
+    "2026-11-09": 1833994007,
+    "2026-11-10": 1833994012,
+    "2026-11-11": 1833994018,
+    "2026-11-12": 1833994019,
+    "2026-11-13": 1833994022,
+    "2026-11-14": 1833994025
+   },
+   "sent": true
+  },
+  "Arms & Shoulders": {
+   "workout_name": "Arms & Shoulders",
+   "workout_id": 1755043812,
+   "library": "00 - Arms & Shoulders - Phase 1 - Strength Workout",
+   "created_at": "2026-11-08T05:40:58",
+   "schedule_ids": {
+    "2026-11-09": 1833994042,
+    "2026-11-12": 1833994044
+   },
+   "sent": true
+  },
+  "Legs & Abs": {
+   "workout_name": "Legs & Abs",
+   "workout_id": 1755043824,
+   "library": "Legs & Abs - Phase 1 - Strength Workout",
+   "created_at": "2026-11-08T05:40:58",
+   "schedule_ids": {
+    "2026-11-10": 1833994055,
+    "2026-11-13": 1833994057
+   },
+   "sent": true
+  },
+  "Chest & Back": {
+   "workout_name": "Chest & Back",
+   "workout_id": 1755043838,
+   "library": "1- Chest & Back - Phase 1 - Strength Workout",
+   "created_at": "2026-11-08T05:40:59",
+   "schedule_ids": {
+    "2026-11-11": 1833994076
+   },
+   "sent": true
+  }
+ },
  "sessions": [
   {
    "date": "2026-11-08",
@@ -19,12 +86,8 @@
    "type": "strength",
    "routine": "Circuit Workout - Midday",
    "cancelled": false,
-   "workout_name": "2026-11-08 Sun 12:10 Circuit Workout - Midday",
-   "workout_id": 1755036967,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:31",
-   "schedule_id": 1833987013,
-   "sent": true
+   "workout_id": 1755043762,
+   "schedule_id": 1833993974
   },
   {
    "date": "2026-11-08",
@@ -32,14 +95,10 @@
    "time": "16:45",
    "slot": "night",
    "type": "strength",
-   "routine": "Circuit Workout - Midday",
+   "routine": "Circuit Workout - Night",
    "cancelled": false,
-   "workout_name": "2026-11-08 Sun 16:45 Circuit Workout - Midday",
-   "workout_id": 1755036978,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:32",
-   "schedule_id": 1833987025,
-   "sent": true
+   "workout_id": 1755043785,
+   "schedule_id": 1833994003
   },
   {
    "date": "2026-11-09",
@@ -49,12 +108,8 @@
    "type": "strength",
    "routine": "Arms & Shoulders",
    "cancelled": false,
-   "workout_name": "2026-11-09 Mon 06:00 Arms & Shoulders",
-   "workout_id": 1755036989,
-   "library": "00 - Arms & Shoulders - Phase 1 - Strength Workout",
-   "created_at": "2026-11-08T05:33:32",
-   "schedule_id": 1833987037,
-   "sent": true
+   "workout_id": 1755043812,
+   "schedule_id": 1833994042
   },
   {
    "date": "2026-11-09",
@@ -64,12 +119,8 @@
    "type": "strength",
    "routine": "Circuit Workout - Midday",
    "cancelled": false,
-   "workout_name": "2026-11-09 Mon 12:10 Circuit Workout - Midday",
-   "workout_id": 1755036999,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:33",
-   "schedule_id": 1833987048,
-   "sent": true
+   "workout_id": 1755043762,
+   "schedule_id": 1833993976
   },
   {
    "date": "2026-11-09",
@@ -77,14 +128,10 @@
    "time": "16:45",
    "slot": "night",
    "type": "strength",
-   "routine": "Circuit Workout - Midday",
+   "routine": "Circuit Workout - Night",
    "cancelled": false,
-   "workout_name": "2026-11-09 Mon 16:45 Circuit Workout - Midday",
-   "workout_id": 1755037005,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:34",
-   "schedule_id": 1833987053,
-   "sent": true
+   "workout_id": 1755043785,
+   "schedule_id": 1833994007
   },
   {
    "date": "2026-11-10",
@@ -94,12 +141,8 @@
    "type": "strength",
    "routine": "Legs & Abs",
    "cancelled": false,
-   "workout_name": "2026-11-10 Tue 06:45 Legs & Abs",
-   "workout_id": 1755037017,
-   "library": "Legs & Abs - Phase 1 - Strength Workout",
-   "created_at": "2026-11-08T05:33:34",
-   "schedule_id": 1833987063,
-   "sent": true
+   "workout_id": 1755043824,
+   "schedule_id": 1833994055
   },
   {
    "date": "2026-11-10",
@@ -109,12 +152,8 @@
    "type": "strength",
    "routine": "Circuit Workout - Midday",
    "cancelled": false,
-   "workout_name": "2026-11-10 Tue 12:10 Circuit Workout - Midday",
-   "workout_id": 1755037024,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:35",
-   "schedule_id": 1833987068,
-   "sent": true
+   "workout_id": 1755043762,
+   "schedule_id": 1833993979
   },
   {
    "date": "2026-11-10",
@@ -122,14 +161,10 @@
    "time": "16:45",
    "slot": "night",
    "type": "strength",
-   "routine": "Circuit Workout - Midday",
+   "routine": "Circuit Workout - Night",
    "cancelled": false,
-   "workout_name": "2026-11-10 Tue 16:45 Circuit Workout - Midday",
-   "workout_id": 1755037031,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:35",
-   "schedule_id": 1833987073,
-   "sent": true
+   "workout_id": 1755043785,
+   "schedule_id": 1833994012
   },
   {
    "date": "2026-11-11",
@@ -139,12 +174,8 @@
    "type": "strength",
    "routine": "Chest & Back",
    "cancelled": false,
-   "workout_name": "2026-11-11 Wed 06:00 Chest & Back",
-   "workout_id": 1755037043,
-   "library": "1- Chest & Back - Phase 1 - Strength Workout",
-   "created_at": "2026-11-08T05:33:36",
-   "schedule_id": 1833987085,
-   "sent": true
+   "workout_id": 1755043838,
+   "schedule_id": 1833994076
   },
   {
    "date": "2026-11-11",
@@ -154,12 +185,8 @@
    "type": "strength",
    "routine": "Circuit Workout - Midday",
    "cancelled": false,
-   "workout_name": "2026-11-11 Wed 12:10 Circuit Workout - Midday",
-   "workout_id": 1755037054,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:36",
-   "schedule_id": 1833987095,
-   "sent": true
+   "workout_id": 1755043762,
+   "schedule_id": 1833993983
   },
   {
    "date": "2026-11-11",
@@ -167,14 +194,10 @@
    "time": "16:45",
    "slot": "night",
    "type": "strength",
-   "routine": "Circuit Workout - Midday",
+   "routine": "Circuit Workout - Night",
    "cancelled": false,
-   "workout_name": "2026-11-11 Wed 16:45 Circuit Workout - Midday",
-   "workout_id": 1755037059,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:37",
-   "schedule_id": 1833987099,
-   "sent": true
+   "workout_id": 1755043785,
+   "schedule_id": 1833994018
   },
   {
    "date": "2026-11-12",
@@ -184,12 +207,8 @@
    "type": "strength",
    "routine": "Arms & Shoulders",
    "cancelled": false,
-   "workout_name": "2026-11-12 Thu 06:45 Arms & Shoulders",
-   "workout_id": 1755037067,
-   "library": "00 - Arms & Shoulders - Phase 1 - Strength Workout",
-   "created_at": "2026-11-08T05:33:37",
-   "schedule_id": 1833987107,
-   "sent": true
+   "workout_id": 1755043812,
+   "schedule_id": 1833994044
   },
   {
    "date": "2026-11-12",
@@ -199,12 +218,8 @@
    "type": "strength",
    "routine": "Circuit Workout - Midday",
    "cancelled": false,
-   "workout_name": "2026-11-12 Thu 12:10 Circuit Workout - Midday",
-   "workout_id": 1755037073,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:38",
-   "schedule_id": 1833987112,
-   "sent": true
+   "workout_id": 1755043762,
+   "schedule_id": 1833993987
   },
   {
    "date": "2026-11-12",
@@ -212,14 +227,10 @@
    "time": "16:45",
    "slot": "night",
    "type": "strength",
-   "routine": "Circuit Workout - Midday",
+   "routine": "Circuit Workout - Night",
    "cancelled": false,
-   "workout_name": "2026-11-12 Thu 16:45 Circuit Workout - Midday",
-   "workout_id": 1755037088,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:38",
-   "schedule_id": 1833987128,
-   "sent": true
+   "workout_id": 1755043785,
+   "schedule_id": 1833994019
   },
   {
    "date": "2026-11-13",
@@ -229,12 +240,8 @@
    "type": "strength",
    "routine": "Legs & Abs",
    "cancelled": false,
-   "workout_name": "2026-11-13 Fri 06:00 Legs & Abs",
-   "workout_id": 1755037099,
-   "library": "Legs & Abs - Phase 1 - Strength Workout",
-   "created_at": "2026-11-08T05:33:39",
-   "schedule_id": 1833987137,
-   "sent": true
+   "workout_id": 1755043824,
+   "schedule_id": 1833994057
   },
   {
    "date": "2026-11-13",
@@ -244,12 +251,8 @@
    "type": "strength",
    "routine": "Circuit Workout - Midday",
    "cancelled": false,
-   "workout_name": "2026-11-13 Fri 12:10 Circuit Workout - Midday",
-   "workout_id": 1755037108,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:39",
-   "schedule_id": 1833987149,
-   "sent": true
+   "workout_id": 1755043762,
+   "schedule_id": 1833993988
   },
   {
    "date": "2026-11-13",
@@ -257,14 +260,10 @@
    "time": "16:45",
    "slot": "night",
    "type": "strength",
-   "routine": "Circuit Workout - Midday",
+   "routine": "Circuit Workout - Night",
    "cancelled": false,
-   "workout_name": "2026-11-13 Fri 16:45 Circuit Workout - Midday",
-   "workout_id": 1755037119,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:40",
-   "schedule_id": 1833987158,
-   "sent": true
+   "workout_id": 1755043785,
+   "schedule_id": 1833994022
   },
   {
    "date": "2026-11-14",
@@ -274,12 +273,8 @@
    "type": "strength",
    "routine": "Circuit Workout - Midday",
    "cancelled": false,
-   "workout_name": "2026-11-14 Sat 12:10 Circuit Workout - Midday",
-   "workout_id": 1755037126,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:40",
-   "schedule_id": 1833987168,
-   "sent": true
+   "workout_id": 1755043762,
+   "schedule_id": 1833993990
   },
   {
    "date": "2026-11-14",
@@ -287,15 +282,11 @@
    "time": "16:45",
    "slot": "night",
    "type": "strength",
-   "routine": "Circuit Workout - Midday",
+   "routine": "Circuit Workout - Night",
    "cancelled": false,
-   "workout_name": "2026-11-14 Sat 16:45 Circuit Workout - Midday",
-   "workout_id": 1755037136,
-   "library": "Circuit Workout - Midday",
-   "created_at": "2026-11-08T05:33:41",
-   "schedule_id": 1833987177,
-   "sent": true
+   "workout_id": 1755043785,
+   "schedule_id": 1833994025
   }
  ],
- "built_at": "2026-11-08T05:33:41"
+ "built_at": "2026-11-08T05:40:59"
 }

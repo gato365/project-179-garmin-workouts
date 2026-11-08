@@ -38,9 +38,15 @@ project-105). Nothing in this repo holds credentials. `--dry-run` never logs in.
 
 ### What `build` produces
 
-- **Name with the date**: `2026-11-09 Mon 06:00 Arms & Shoulders`. Each week's
-  workouts are distinct objects, so the Connect library and `history/` are
-  searchable by day instead of filling with identical "Phase 1" copies.
+- **One workout per routine** (`reuse: true`, the current plan): five plain
+  names - `Arms & Shoulders`, `Circuit Workout - Midday`, `Legs & Abs`,
+  `Chest & Back`, `Circuit Workout - Night` - each scheduled on every date it
+  appears. The description lists the planned times (`06:00 Mon; 06:45 Thu`).
+  A plan routine can point at a library entry with `library:` so two names
+  (midday / night) share one definition.
+- **Name with the date** (`reuse` off): `2026-11-09 Mon 06:00 Arms & Shoulders`.
+  Each session is its own object, so the Connect library and `history/` are
+  searchable by day. Useful when a week is a one-off.
 - **Description = the plan**: the week's description, the routine's `change`
   note (how and why this week differs), the rest policy, the planned start
   time, the focus note, and the exact weights.
@@ -137,6 +143,9 @@ Drop a file in and reference it here:
 ## Weekly workout plan
 
 ### Week of 2026-11-08
+
+Five Garmin workouts: Arms & Shoulders, Circuit Workout - Midday, Legs & Abs,
+Chest & Back, Circuit Workout - Night (same circuit as midday).
 
 | Day | Morning | Midday | Night |
 |---|---|---|---|

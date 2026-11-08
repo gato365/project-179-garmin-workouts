@@ -14,6 +14,9 @@ keep a history of what was created, and score adherence afterwards.
 HOW A SESSION BECOMES A WORKOUT
   * name        "<date> <Dow> <HH:MM> <routine>"  - dated, so the library never
                 fills with identical "Phase 1" copies and the history is searchable.
+                With `reuse: true` in the plan there is instead ONE workout per
+                routine, named just "<routine>", scheduled on every date it
+                appears. Use this when the same workouts repeat week after week.
   * description the plan's `description`, the routine's `change` note (how and
                 why this week differs), the rest policy, and the weights used.
   * steps       every block of the library routine becomes a Garmin repeat group.
@@ -192,7 +195,8 @@ def session_name(plan, s):
                       routine=s["routine"], slot=s["slot"]).strip()
 
 
-def build_payload(plan, s, library, aliases):
+def build_payload(plan, s, library, aliases, name=None, times=None):
+    """`times` = [(dow, HH:MM), ...] for a reused workout; one line lists them all."""
     cfg = routine_cfg(plan, s)
     routine = find_routine(library, cfg.get("library") or s["routine"])
     rest_default = seconds(cfg.get("rest"), seconds(plan.get("rest_between_sets"), None))
@@ -262,14 +266,21 @@ def build_payload(plan, s, library, aliases):
     if cfg.get("change"):
         desc.append("Change: " + cfg["change"].strip())
     rest_txt = f"{rest_default}s" if rest_default is not None else "library rests"
-    desc.append(f"Rest {rest_txt} between sets ({order}). Planned start {s['time'] or '-'}.")
+    if times:
+        by_time = {}
+        for dow, tm in times:
+            by_time.setdefault(tm or "-", []).append(dow)
+        planned = "; ".join(f"{tm} {' '.join(d)}" for tm, d in by_time.items())
+        desc.append(f"Rest {rest_txt} between sets ({order}). Planned: {planned}.")
+    else:
+        desc.append(f"Rest {rest_txt} between sets ({order}). Planned start {s['time'] or '-'}.")
     if plan.get("focus_note"):
         desc.append(plan["focus_note"].strip())
     if used_weights:
         desc.append("Weights: " + "; ".join(dict.fromkeys(used_weights)))
     description = "\n".join(desc)[:1024]
 
-    payload = gw.new_workout(session_name(plan, s), steps, description)
+    payload = gw.new_workout(name or session_name(plan, s), steps, description)
     return gw.renumber(payload), routine["name"]
 
 
@@ -319,8 +330,82 @@ def cmd_validate(a):
     sys.exit(1 if bad else 0)
 
 
+def cmd_build_reuse(a, plan):
+    """reuse: true - one Garmin workout per routine, scheduled on each of its dates."""
+    library, aliases = load_library(), load_aliases()
+    sess = sessions(plan)
+    g = None if a.dry_run else gw.client()
+    hist = read_history(a.plan) or {"plan": os.path.relpath(a.plan, HERE), "week_start": str(week_dates(plan)),
+                                     "mode": "reuse", "workouts": {}, "sessions": []}
+    hist.setdefault("workouts", {})
+    groups = {}
+    for s in sess:
+        if s["cancelled"] or s["type"] != "strength":
+            print(f"-- {s['date']} {s['time'] or '--:--'} {s['routine']}: {'cancelled' if s['cancelled'] else s['type']} - no Garmin workout")
+            continue
+        groups.setdefault(s["routine"], []).append(s)
+    fmt = plan.get("name_format") or "{routine}"
+    created = 0
+    for routine, ss in groups.items():
+        have = hist["workouts"].get(routine) or {}
+        if have.get("workout_id") and not have.get("deleted_at") and not a.force:
+            print(f"-- {routine}: already built (workoutId {have['workout_id']}); use --force to rebuild")
+            continue
+        times = [(s["dow"], s["time"]) for s in ss]
+        name = fmt.format(routine=routine, date="", dow="", time="", slot="").strip()
+        payload, lib_name = build_payload(plan, ss[0], library, aliases, name=name, times=times)
+        dates = sorted({s["date"].isoformat() for s in ss})
+        print(f"\n## {payload['workoutName']}   (library: {lib_name})   dates: {', '.join(dates)}")
+        gw.print_workout(payload)
+        if a.dry_run:
+            if a.json:
+                print(json.dumps(payload, indent=1))
+            continue
+        r = gw.api(g, "POST", f"{gw.WS}/workout", json=payload)
+        wid = r.get("workoutId") if isinstance(r, dict) else None
+        if not wid:
+            print("  !! create failed:", json.dumps(r)[:500])
+            continue
+        rec = {"workout_name": payload["workoutName"], "workout_id": wid, "library": lib_name,
+               "created_at": datetime.now().isoformat(timespec="seconds"), "schedule_ids": {}}
+        print(f"  created -> workoutId {wid}")
+        if plan.get("schedule", True) and not a.no_schedule:
+            for d in dates:
+                try:
+                    sr = gw.api(g, "POST", f"{gw.WS}/schedule/{wid}", json={"date": d})
+                    rec["schedule_ids"][d] = sr.get("workoutScheduleId") if isinstance(sr, dict) else None
+                    print(f"  scheduled on {d} (scheduleId {rec['schedule_ids'][d]})")
+                except Exception as e:                        # pragma: no cover
+                    print(f"  !! schedule {d} failed: {e}")
+        if a.send:
+            gw.push(g, wid, a.device)
+            rec["sent"] = True
+        hist["workouts"][routine] = rec
+        created += 1
+    if a.dry_run:
+        print(f"\n--dry-run: {len(groups)} workout(s) would be created for "
+              f"{sum(len(v) for v in groups.values())} session(s); nothing sent to Garmin.")
+        return
+    hist["sessions"] = []
+    for s in sess:
+        w = hist["workouts"].get(s["routine"]) or {}
+        rec = {"date": s["date"].isoformat(), "dow": s["dow"], "time": s["time"], "slot": s["slot"],
+               "type": s["type"], "routine": s["routine"], "cancelled": s["cancelled"]}
+        if s["type"] == "strength" and not s["cancelled"] and w.get("workout_id"):
+            rec["workout_id"] = w["workout_id"]
+            rec["schedule_id"] = (w.get("schedule_ids") or {}).get(rec["date"])
+        hist["sessions"].append(rec)
+    hist["built_at"] = datetime.now().isoformat(timespec="seconds")
+    os.makedirs(HISTORY, exist_ok=True)
+    json.dump(hist, open(history_path(a.plan), "w"), indent=1)
+    print(f"\n{created} workout(s) created for {len(hist['sessions'])} session(s). "
+          f"History -> {os.path.relpath(history_path(a.plan), HERE)}")
+
+
 def cmd_build(a):
     plan = load_yaml(a.plan)
+    if plan.get("reuse"):
+        return cmd_build_reuse(a, plan)
     library, aliases = load_library(), load_aliases()
     sess = sessions(plan)
     g = None if a.dry_run else gw.client()
@@ -461,11 +546,27 @@ def cmd_cleanup(a):
     hist = read_history(a.plan)
     if not hist:
         sys.exit("no history for this plan; nothing to delete")
-    ids = [h["workout_id"] for h in hist["sessions"] if h.get("workout_id")]
+    reused = hist.get("workouts") or {}
+    if reused:
+        ids = sorted({w["workout_id"] for w in reused.values() if w.get("workout_id") and not w.get("deleted_at")})
+    else:
+        ids = [h["workout_id"] for h in hist["sessions"] if h.get("workout_id") and not h.get("deleted_at")]
     if not a.yes:
         sys.exit(f"would delete {len(ids)} workout(s) from the Connect library: {ids}  (add --yes)")
     g = gw.client()
-    for h in hist["sessions"]:
+    for routine, w in reused.items():
+        if w.get("deleted_at") or not w.get("workout_id"):
+            continue
+        for d, sid in (w.get("schedule_ids") or {}).items():
+            if sid:
+                try:
+                    gw.api(g, "DELETE", f"{gw.WS}/schedule/{sid}")
+                except Exception:
+                    pass
+        gw.api(g, "DELETE", f"{gw.WS}/workout/{w['workout_id']}")
+        print(f"deleted [{w['workout_id']}] {w.get('workout_name')}  ({len(w.get('schedule_ids') or {})} calendar entries)")
+        w["deleted_at"] = datetime.now().isoformat(timespec="seconds")
+    for h in [] if reused else hist["sessions"]:
         if h.get("schedule_id"):
             try:
                 gw.api(g, "DELETE", f"{gw.WS}/schedule/{h['schedule_id']}")
